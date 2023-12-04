@@ -630,6 +630,9 @@ boolean auto_habitatTarget(monster target)
 		case $monster[modern zmobie]:
 		 	// only worth it if we need 30 or more evilness reduced.
 			return (get_property("cyrptAlcoveEvilness").to_int() > 42);
+		case $monster[lobsterfrogman]:
+			// only if no automaton and less-than-0 barrels acquired
+			return (!get_property("auto_hasAutumnaton") && item_amount($item[barrel of gunpowder]) <1)
 		case $monster[eldritch tentacle]:
 			return (get_property("auto_habitatMonster").to_monster() == target || (get_property("_monsterHabitatsMonster").to_monster() == target && get_property("_monsterHabitatsFightsLeft").to_int() == 0));
 		default:
